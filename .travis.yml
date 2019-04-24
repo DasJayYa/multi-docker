@@ -5,9 +5,8 @@ services:
 before_install:
   - docker build -t jaybiesh/react-test -f ./client/Dockerfile.dev ./client
 
-# removed because of bug
-#script:
-#  - docker run jaybiesh/react-test npm test -- --coverage
+script:
+  - docker run jaybiesh/react-test npm test -- --coverage
 
 after_success:
   - docker build -t jaybiesh/multi-client ./client
