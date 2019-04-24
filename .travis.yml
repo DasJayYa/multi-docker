@@ -15,7 +15,7 @@ after_success:
   - docker build -t jaybiesh/multi-worker ./worker
   # Log in to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Push to dockerhub
+  # Push to dockerhub a
   - docker push jaybiesh/multi-client
   - docker push jaybiesh/multi-nginx
   - docker push jaybiesh/multi-server
