@@ -3,12 +3,12 @@ services:
   - docker
 
 before_install:
-  - docker build -t jaybiesh/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jaybiesh/react-test -f ./client/Dockerfile.dev ./client  
 
-#script:
-# - docker run jaybiesh/react-test npm run test -- --coverage
+script:
+ - docker run -e CI=true jaybiesh/react-test npm run test -- --watchAll=false
 
-after_install:
+after_success:
   - docker build -t jaybiesh/multi-client ./client
   - docker build -t jaybiesh/multi-nginx ./nginx
   - docker build -t jaybiesh/multi-server ./server
