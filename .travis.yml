@@ -20,3 +20,16 @@ after_success:
   - docker push jaybiesh/multi-nginx
   - docker push jaybiesh/multi-server
   - docker push jaybiesh/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "multi-docer"  
+  env: "multi-docer-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-233460682103"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
